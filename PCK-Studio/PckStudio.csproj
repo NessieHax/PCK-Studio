@@ -173,10 +173,17 @@
     <Compile Include="Classes\ToolboxItems\ToolStripRadioButtonMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Classes\Utils\BinkaConverter.cs" />
     <Compile Include="Extensions\ImageLayoutDirection.cs" />
     <Compile Include="Extensions\ImageSection.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\PckFileExtensions.cs" />
+    <Compile Include="Forms\Additional-Popups\NumericPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Additional-Popups\NumericPrompt.Designer.cs">
+      <DependentUpon>NumericPrompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Utilities\AppBehaviorSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,10 +215,10 @@
     <Compile Include="Classes\Misc\OpenFolderDialog.cs" />
     <Compile Include="Classes\Models\DefaultModels\Steve64x64Model.cs" />
     <Compile Include="Internals\ApplicationScope.cs" />
+    <Compile Include="Internals\SettingsManager.cs" />
     <Compile Include="Internals\PckFileDirectory.cs" />
     <Compile Include="Internals\PckFileSaveContext.cs" />
     <Compile Include="Internals\SkinBOX.cs" />
-    <Compile Include="Classes\Utils\ARC\ARCUtil.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Internals\SkinANIM.cs" />
     <Compile Include="Classes\Models\DefaultModels\Steve64x32Model.cs" />
@@ -270,29 +277,23 @@
     <Compile Include="Forms\Additional-Popups\CreateTexturePack.Designer.cs">
       <DependentUpon>CreateTexturePack.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Additional-Popups\MipMapPrompt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Additional-Popups\MipMapPrompt.Designer.cs">
-      <DependentUpon>MipMapPrompt.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Additional-Popups\AddFilePrompt.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Additional-Popups\AddFilePrompt.Designer.cs">
       <DependentUpon>AddFilePrompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Additional-Popups\RenamePrompt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Additional-Popups\RenamePrompt.Designer.cs">
-      <DependentUpon>RenamePrompt.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Additional-Popups\TextPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Additional-Popups\TextPrompt.Designer.cs">
       <DependentUpon>TextPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Additional-Popups\MultiTextPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Additional-Popups\MultiTextPrompt.Designer.cs">
+      <DependentUpon>MultiTextPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Editor\Animation.cs" />
     <Compile Include="Forms\Editor\AnimationPictureBox.cs">
@@ -501,20 +502,20 @@
       <DependentUpon>CreateTexturePack.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Additional-Popups\MipMapPrompt.resx">
-      <DependentUpon>MipMapPrompt.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Additional-Popups\AddFilePrompt.resx">
       <DependentUpon>AddFilePrompt.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Additional-Popups\RenamePrompt.resx">
-      <DependentUpon>RenamePrompt.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Additional-Popups\NumericPrompt.resx">
+      <DependentUpon>NumericPrompt.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Additional-Popups\TextPrompt.resx">
       <DependentUpon>TextPrompt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Additional-Popups\MultiTextPrompt.resx">
+      <DependentUpon>MultiTextPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editor\MaterialsEditor.resx">
       <DependentUpon>MaterialsEditor.cs</DependentUpon>
@@ -783,6 +784,7 @@
       <Name>SharpMss32</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
