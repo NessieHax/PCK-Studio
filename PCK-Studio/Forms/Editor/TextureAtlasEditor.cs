@@ -121,7 +121,7 @@ namespace PckStudio
         private void SetImageDisplayed(int index)
         {
             tileNameLabel.Text = string.Empty;
-            
+
             variantLabel.Visible = false;
             variantComboBox.Visible = false;
             variantComboBox.Items.Clear();
@@ -152,6 +152,12 @@ namespace PckStudio
             animationButton.Text = hasAnimation ? "Edit Animation" : "Create Animation";
             replaceButton.Enabled = !hasAnimation;
 
+            if (variantLabel.Visible = variantComboBox.Visible = _selectedTile.Tile.HasColourEntry)
+            {
+                variantComboBox.Items.AddRange(_selectedTile.Tile.ColourEntry.Variants);
+                variantComboBox.SelectedItem = _selectedTile.Tile.ColourEntry.DefaultName;
+            }
+
             if (playAnimationsToolStripMenuItem.Checked &&
                 hasAnimation &&
                 animationFile.Size > 0)
@@ -164,15 +170,9 @@ namespace PckStudio
                 return;
             }
 
-            if (variantLabel.Visible = variantComboBox.Visible = _selectedTile.Tile.HasColourEntry && _selectedTile.Tile.ColourEntry.Variants.Length > 1)
-            {
-                variantComboBox.Items.AddRange(_selectedTile.Tile.ColourEntry.Variants);
-                variantComboBox.SelectedItem = _selectedTile.Tile.ColourEntry.DefaultName;
-            }
-            
             selectTilePictureBox.Image = _selectedTile.Texture;
         }
-        
+
         private static int GetSelectedImageIndex(
             Size pictureBoxSize,
             Size imageSize,
@@ -239,7 +239,7 @@ namespace PckStudio
                         result.Y = (int)((clickLocation.Y - imageArea.Y) / scaledArea.Height);
                     }
                     break;
-                
+
                 default:
                     break;
             };
@@ -251,7 +251,7 @@ namespace PckStudio
             return imageLayout switch
             {
                 ImageLayoutDirection.Horizontal => x + y * rowCount,
-                ImageLayoutDirection.Vertical   => y + x * columnCount,
+                ImageLayoutDirection.Vertical => y + x * columnCount,
                 _ => throw new ArgumentOutOfRangeException(nameof(imageLayout)),
             };
         }
@@ -294,7 +294,7 @@ namespace PckStudio
 
         private void ApplyBlend(string colorKey, Image image)
         {
-            if (variantComboBox.Enabled = _selectedTile.Tile.ColourEntry.Variants.Length > 1)
+            if (variantComboBox.Enabled = _selectedTile.Tile.HasColourEntry)
             {
                 selectTilePictureBox.BlendColor = FindBlendColorByKey(colorKey);
                 selectTilePictureBox.Image = image;
