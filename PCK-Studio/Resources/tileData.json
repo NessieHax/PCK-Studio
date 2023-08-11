@@ -1,6 +1,6 @@
 {
 	"COMMENT_1": "Tile data research by MattNL",
-	"COMMENT_2": "JSON conversion by PhoenixARC",
+	"COMMENT_2": "JSON by PhoenixARC, MattNL, and NessieHax (Miku-666)",
 	"blocks": [
 		{
 			"internalName": "grass_top",
@@ -12,6 +12,7 @@
 				"variants": [
 					"Grass_Common",
 					"Grass_Mesa",
+					"Grass_Roofed_Forest_Modifier",
 					"Grass_Swamp1",
 					"Grass_Swamp2"
 				]
@@ -175,6 +176,7 @@
 				"variants": [
 					"Grass_Common",
 					"Grass_Mesa",
+					"Grass_Roofed_Forest_Modifier",
 					"Grass_Swamp1",
 					"Grass_Swamp2"
 				]
@@ -190,6 +192,7 @@
 				"variants": [
 					"Grass_Common",
 					"Grass_Mesa",
+					"Grass_Roofed_Forest_Modifier",
 					"Grass_Swamp1",
 					"Grass_Swamp2"
 				]
@@ -252,8 +255,8 @@
 				"defaultName": "Foliage_Default",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -268,8 +271,8 @@
 				"defaultName": "Foliage_Default",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -293,6 +296,7 @@
 				"variants": [
 					"Grass_Common",
 					"Grass_Mesa",
+					"Grass_Roofed_Forest_Modifier",
 					"Grass_Swamp1",
 					"Grass_Swamp2"
 				]
@@ -521,7 +525,15 @@
 		},
 		{
 			"internalName": "stem_straight",
-			"displayName": "Stem"
+			"displayName": "Stem",
+			"hasColourEntry": true,
+			"colourEntry": {
+				"defaultName": "Tile_StemMax",
+				"variants": [ 
+					"Tile_StemMax",
+					"Tile_StemMin"
+				]
+			}
 		},
 		{
 			"internalName": "rail_normal_turned",
@@ -585,7 +597,15 @@
 		},
 		{
 			"internalName": "stem_bent",
-			"displayName": "Stem (Attached)"
+			"displayName": "Stem (Attached)",
+			"hasColourEntry": true,
+			"colourEntry": {
+				"defaultName": "Tile_StemMax",
+				"variants": [ 
+					"Tile_StemMax",
+					"Tile_StemMin"
+				]
+			}
 		},
 		{
 			"internalName": "rail_normal",
@@ -612,8 +632,8 @@
 				"defaultName": "Foliage_Evergreen",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -628,8 +648,8 @@
 				"defaultName": "Foliage_Evergreen",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -764,9 +784,9 @@
 				"defaultName": "Tile_RedstoneDust",
 				"variants": [
 					"Tile_RedstoneDust",
-					"Tile_RedstoneDustUnlit",
+					"Tile_RedstoneDustLitMax",
 					"Tile_RedstoneDustLitMin",
-					"Tile_RedstoneDustLitMax"
+					"Tile_RedstoneDustUnlit"
 				]
 			}
 		},
@@ -779,9 +799,9 @@
 				"defaultName": "Tile_RedstoneDust",
 				"variants": [
 					"Tile_RedstoneDust",
-					"Tile_RedstoneDustUnlit",
+					"Tile_RedstoneDustLitMax",
 					"Tile_RedstoneDustLitMin",
-					"Tile_RedstoneDustLitMax"
+					"Tile_RedstoneDustUnlit"
 				]
 			}
 		},
@@ -914,8 +934,8 @@
 				"defaultName": "Foliage_Default",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -930,8 +950,8 @@
 				"defaultName": "Foliage_Default",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -972,7 +992,68 @@
 			"colourEntry": {
 				"isWaterColour": true,
 				"defaultName": "default",
-				"variants": [ "default" ]
+				"variants": [ 
+					"default",
+					"beach",
+					"birch_forest",
+					"birch_forest_hills",
+					"cold_beach",
+					"cold_ocean",
+					"cold_taiga",
+					"cold_taiga_hills",
+					"cold_taiga_mutated",
+					"deep_cold_ocean",
+					"deep_frozen_ocean",
+					"deep_lukewarm_ocean",
+					"deep_ocean",
+					"deep_warm_ocean",
+					"desert",
+					"desert_hills",
+					"extreme_hills",
+					"extreme_hills_edge",
+					"extreme_hills_mutated",
+					"extreme_hills_plus_trees",
+					"extreme_hills_plus_trees_mutated",
+					"flower_forest",
+					"forest",
+					"forest_hills",
+					"frozen_ocean",
+					"frozen_river",
+					"hell",
+					"ice_mountains",
+					"ice_plains",
+					"ice_plains_spikes",
+					"jungle",
+					"jungle_edge",
+					"jungle_hills",
+					"jungle_mutated",
+					"lukewarm_ocean",
+					"mega_spruce_taiga",
+					"mega_taiga",
+					"mega_taiga_hills",
+					"mesa",
+					"mesa_bryce",
+					"mesa_plateau",
+					"mesa_plateau_stone",
+					"mushroom_island",
+					"mushroom_island_shore",
+					"ocean",
+					"plains",
+					"river",
+					"roofed_forest",
+					"savanna",
+					"savanna_mutated",
+					"savanna_plateau",
+					"stone_beach",
+					"sunflower_plains",
+					"swampland",
+					"swampland_mutated",
+					"taiga",
+					"taiga_hills",
+					"taiga_mutated",
+					"the_end",
+					"warm_ocean"
+				]
 			}
 		},
 		{
@@ -982,7 +1063,68 @@
 			"colourEntry": {
 				"isWaterColour": true,
 				"defaultName": "default",
-				"variants": [ "default" ]
+				"variants": [ 
+					"default",
+					"beach",
+					"birch_forest",
+					"birch_forest_hills",
+					"cold_beach",
+					"cold_ocean",
+					"cold_taiga",
+					"cold_taiga_hills",
+					"cold_taiga_mutated",
+					"deep_cold_ocean",
+					"deep_frozen_ocean",
+					"deep_lukewarm_ocean",
+					"deep_ocean",
+					"deep_warm_ocean",
+					"desert",
+					"desert_hills",
+					"extreme_hills",
+					"extreme_hills_edge",
+					"extreme_hills_mutated",
+					"extreme_hills_plus_trees",
+					"extreme_hills_plus_trees_mutated",
+					"flower_forest",
+					"forest",
+					"forest_hills",
+					"frozen_ocean",
+					"frozen_river",
+					"hell",
+					"ice_mountains",
+					"ice_plains",
+					"ice_plains_spikes",
+					"jungle",
+					"jungle_edge",
+					"jungle_hills",
+					"jungle_mutated",
+					"lukewarm_ocean",
+					"mega_spruce_taiga",
+					"mega_taiga",
+					"mega_taiga_hills",
+					"mesa",
+					"mesa_bryce",
+					"mesa_plateau",
+					"mesa_plateau_stone",
+					"mushroom_island",
+					"mushroom_island_shore",
+					"ocean",
+					"plains",
+					"river",
+					"roofed_forest",
+					"savanna",
+					"savanna_mutated",
+					"savanna_plateau",
+					"stone_beach",
+					"sunflower_plains",
+					"swampland",
+					"swampland_mutated",
+					"taiga",
+					"taiga_hills",
+					"taiga_mutated",
+					"the_end",
+					"warm_ocean"
+				]
 			}
 		},
 		{
@@ -1439,11 +1581,35 @@
 		},
 		{
 			"internalName": "double_plant_fern_top",
-			"displayName": "Large Fern (Top)"
+			"displayName": "Large Fern (Top)",
+			"hasColourEntry": true,
+			"colourEntry": {
+				"isWaterColour": false,
+				"defaultName": "Grass_Common",
+				"variants": [
+					"Grass_Common",
+					"Grass_Mesa",
+					"Grass_Roofed_Forest_Modifier",
+					"Grass_Swamp1",
+					"Grass_Swamp2"
+				]
+			}
 		},
 		{
 			"internalName": "double_plant_grass_top",
-			"displayName": "Double Tall Grass (Top)"
+			"displayName": "Double Tall Grass (Top)",
+			"hasColourEntry": true,
+			"colourEntry": {
+				"isWaterColour": false,
+				"defaultName": "Grass_Common",
+				"variants": [
+					"Grass_Common",
+					"Grass_Mesa",
+					"Grass_Roofed_Forest_Modifier",
+					"Grass_Swamp1",
+					"Grass_Swamp2"
+				]
+			}
 		},
 		{
 			"internalName": "double_plant_paeonia_top",
@@ -1490,8 +1656,8 @@
 				"defaultName": "Foliage_Default",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -1506,8 +1672,8 @@
 				"defaultName": "Foliage_Default",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -1527,11 +1693,35 @@
 		},
 		{
 			"internalName": "double_plant_fern_bottom",
-			"displayName": "Large Fern (Bottom)"
+			"displayName": "Large Fern (Bottom)",
+			"hasColourEntry": true,
+			"colourEntry": {
+				"isWaterColour": false,
+				"defaultName": "Grass_Common",
+				"variants": [
+					"Grass_Common",
+					"Grass_Mesa",
+					"Grass_Roofed_Forest_Modifier",
+					"Grass_Swamp1",
+					"Grass_Swamp2"
+				]
+			}
 		},
 		{
 			"internalName": "double_plant_grass_bottom",
-			"displayName": "Double Tall Grass (Bottom)"
+			"displayName": "Double Tall Grass (Bottom)",
+			"hasColourEntry": true,
+			"colourEntry": {
+				"isWaterColour": false,
+				"defaultName": "Grass_Common",
+				"variants": [
+					"Grass_Common",
+					"Grass_Mesa",
+					"Grass_Roofed_Forest_Modifier",
+					"Grass_Swamp1",
+					"Grass_Swamp2"
+				]
+			}
 		},
 		{
 			"internalName": "double_plant_paeonia_bottom",
@@ -1578,8 +1768,8 @@
 				"defaultName": "Foliage_Default",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -1594,8 +1784,8 @@
 				"defaultName": "Foliage_Default",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -1666,8 +1856,8 @@
 				"defaultName": "Foliage_Birch",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -1682,8 +1872,8 @@
 				"defaultName": "Foliage_Birch",
 				"variants": [
 					"Foliage_Default",
-					"Foliage_Evergreen",
 					"Foliage_Birch",
+					"Foliage_Evergreen",
 					"Foliage_Mesa",
 					"Foliage_Swampland"
 				]
@@ -2151,7 +2341,29 @@
 		},
 		{
 			"internalName": "shulker_top",
-			"displayName": "Shulker Box (Break Particles)"
+			"displayName": "Shulker Box (Break Particles)",
+			"hasColourEntry": true,
+			"colourEntry": {
+				"defaultName": "Shulker_Box_Purple",
+				"variants": [ 
+					"Shulker_Box_Black",
+					"Shulker_Box_Blue",
+					"Shulker_Box_Brown",
+					"Shulker_Box_Cyan",
+					"Shulker_Box_Grey",
+					"Shulker_Box_Green",
+					"Shulker_Box_Light_Blue",
+					"Shulker_Box_Light_Green",
+					"Shulker_Box_Magenta",
+					"Shulker_Box_Orange",
+					"Shulker_Box_Pink",
+					"Shulker_Box_Purple",
+					"Shulker_Box_Red",
+					"Shulker_Box_Silver",
+					"Shulker_Box_White",
+					"Shulker_Box_Yellow"
+				]
+			}
 		},
 		{
 			"internalName": "",
@@ -2159,12 +2371,42 @@
 		},
 		{
 			"internalName": "cauldron_water",
-			"displayName": "Cauldron Water",
+			"displayName": "Cauldron Contents",
 			"hasColourEntry": true,
 			"colourEntry": {
-				"isWaterColour": true,
-				"defaultName": "default",
-				"variants": [ "default" ]
+				"isWaterColour": false,
+				"defaultName": "Cauldron_Water",
+				"variants": [ 
+					"Cauldron_Water",
+					"Effect_Absorption",
+					"Effect_BadLuck",
+					"Effect_Blindness",
+					"Effect_Confusion",
+					"Effect_DamageBoost",
+					"Effect_DamageResistance",
+					"Effect_DigSlowdown",
+					"Effect_DigSpeed",
+					"Effect_FireResistance",
+					"Effect_Harm",
+					"Effect_Heal",
+					"Effect_HealthBoost",
+					"Effect_Hunger",
+					"Effect_Invisibility",
+					"Effect_Jump",
+					"Effect_Levitation",
+					"Effect_Luck",
+					"Effect_MovementSlowDown",
+					"Effect_MovementSpeed",
+					"Effect_NightVision",
+					"Effect_Poison",
+					"Effect_Regeneration",
+					"Effect_Saturation",
+					"Effect_SlowFall",
+					"Effect_TurtleMaster",
+					"Effect_WaterBreathing",
+					"Effect_Weakness",
+					"Effect_Wither"
+				]
 			}
 		},
 		{
@@ -3323,12 +3565,42 @@
 		},
 		{
 			"internalName": "potion_contents",
-			"displayName": "Potion (Overlay)",
+			"displayName": "Bottle Contents",
 			"hasColourEntry": true,
 			"colourEntry": {
 				"isWaterColour": false,
 				"defaultName": "Potion_BaseColour",
-				"variants": [ "Potion_BaseColour" ]
+				"variants": [ 
+					"Potion_BaseColour",
+					"Effect_Absorption",
+					"Effect_BadLuck",
+					"Effect_Blindness",
+					"Effect_Confusion",
+					"Effect_DamageBoost",
+					"Effect_DamageResistance",
+					"Effect_DigSlowdown",
+					"Effect_DigSpeed",
+					"Effect_FireResistance",
+					"Effect_Harm",
+					"Effect_Heal",
+					"Effect_HealthBoost",
+					"Effect_Hunger",
+					"Effect_Invisibility",
+					"Effect_Jump",
+					"Effect_Levitation",
+					"Effect_Luck",
+					"Effect_MovementSlowDown",
+					"Effect_MovementSpeed",
+					"Effect_NightVision",
+					"Effect_Poison",
+					"Effect_Regeneration",
+					"Effect_Saturation",
+					"Effect_SlowFall",
+					"Effect_TurtleMaster",
+					"Effect_WaterBreathing",
+					"Effect_Weakness",
+					"Effect_Wither"
+				]
 			}
 		},
 		{
@@ -3377,11 +3649,68 @@
 		},
 		{
 			"internalName": "monsterPlacer",
-			"displayName": "Spawn Egg"
+			"displayName": "Spawn Egg",
+			"hasColourEntry": true,
+			"colourEntry": {
+				"defaultName": "Mob_Ghast_Colour1",
+				"variants": [ 
+					"Mob_Bat_Colour1",
+					"Mob_Blaze_Colour1",
+					"Mob_CaveSpider_Colour1",
+					"Mob_Chicken_Colour1",
+					"Mob_Cod_Colour1",
+					"Mob_Cow_Colour1",
+					"Mob_Creeper_Colour1",
+					"Mob_Dolphin_Colour1",
+					"Mob_Donkey_Colour1",
+					"Mob_Drowned_Colour1",
+					"Mob_Elder_Guardian_Colour1",
+					"Mob_Enderman_Colour1",
+					"Mob_Endermite_Color1",
+					"Mob_Evocation_Illager_Colour1",
+					"Mob_Ghast_Colour1",
+					"Mob_Guardian_Color1",
+					"Mob_Horse_Colour1",
+					"Mob_Husk_Colour1",
+					"Mob_LavaSlime_Colour1",
+					"Mob_Llama_Colour1",
+					"Mob_Mule_Colour1",
+					"Mob_MushroomCow_Colour1",
+					"Mob_Ocelot_Colour1",
+					"Mob_Parrot_Colour1",
+					"Mob_Phantom_Colour1",
+					"Mob_PigZombie_Colour1",
+					"Mob_Pig_Colour1",
+					"Mob_PolarBear_Colour1",
+					"Mob_Pufferfish_Colour1",
+					"Mob_Rabbit_Colour1",
+					"Mob_Salmon_Colour1",
+					"Mob_Sheep_Colour1",
+					"Mob_Shulker_Colour1",
+					"Mob_Silverfish_Colour1",
+					"Mob_Skeleton_Colour1",
+					"Mob_Skeleton_Horse_Colour1",
+					"Mob_Slime_Colour1",
+					"Mob_Spider_Colour1",
+					"Mob_Squid_Colour1",
+					"Mob_Stray_Colour1",
+					"Mob_Tropical_Colour1",
+					"Mob_Turtle_Colour1",
+					"Mob_Vex_Colour1",
+					"Mob_Villager_Colour1",
+					"Mob_Vindication_Illager_Colour1",
+					"Mob_Witch_Colour1",
+					"Mob_Wither_Skeleton_Colour1",
+					"Mob_Wolf_Colour1",
+					"Mob_Zombie_Colour1",
+					"Mob_Zombie_Horse_Colour1",
+					"Mob_Zombie_Villager_Colour1"
+				]
+			}
 		},
 		{
 			"internalName": "potion_splash",
-			"displayName": "Splash Potion"
+			"displayName": "Splash Bottle"
 		},
 		{
 			"internalName": "eyeOfEnder",
@@ -3441,7 +3770,64 @@
 		},
 		{
 			"internalName": "monsterPlacer_overlay",
-			"displayName": "Spawn Egg (Overlay)"
+			"displayName": "Spawn Egg (Overlay)",
+			"hasColourEntry": true,
+			"colourEntry": {
+				"defaultName": "Mob_Ghast_Colour2",
+				"variants": [ 
+					"Mob_Bat_Colour2",
+					"Mob_Blaze_Colour2",
+					"Mob_CaveSpider_Colour2",
+					"Mob_Chicken_Colour2",
+					"Mob_Cod_Colour2",
+					"Mob_Cow_Colour2",
+					"Mob_Creeper_Colour2",
+					"Mob_Dolphin_Colour2",
+					"Mob_Donkey_Colour2",
+					"Mob_Drowned_Colour2",
+					"Mob_Elder_Guardian_Colour2",
+					"Mob_Enderman_Colour2",
+					"Mob_Endermite_Color2",
+					"Mob_Evocation_Illager_Colour2",
+					"Mob_Ghast_Colour2",
+					"Mob_Guardian_Color2",
+					"Mob_Horse_Colour2",
+					"Mob_Husk_Colour2",
+					"Mob_LavaSlime_Colour2",
+					"Mob_Llama_Colour2",
+					"Mob_Mule_Colour2",
+					"Mob_MushroomCow_Colour2",
+					"Mob_Ocelot_Colour2",
+					"Mob_Parrot_Colour2",
+					"Mob_Phantom_Colour2",
+					"Mob_PigZombie_Colour2",
+					"Mob_Pig_Colour2",
+					"Mob_PolarBear_Colour2",
+					"Mob_Pufferfish_Colour2",
+					"Mob_Rabbit_Colour2",
+					"Mob_Salmon_Colour2",
+					"Mob_Sheep_Colour2",
+					"Mob_Shulker_Colour2",
+					"Mob_Silverfish_Colour2",
+					"Mob_Skeleton_Colour2",
+					"Mob_Skeleton_Horse_Colour2",
+					"Mob_Slime_Colour2",
+					"Mob_Spider_Colour2",
+					"Mob_Squid_Colour2",
+					"Mob_Stray_Colour2",
+					"Mob_Tropical_Colour2",
+					"Mob_Turtle_Colour2",
+					"Mob_Vex_Colour2",
+					"Mob_Villager_Colour2",
+					"Mob_Vindication_Illager_Colour2",
+					"Mob_Witch_Colour2",
+					"Mob_Wither_Skeleton_Colour2",
+					"Mob_Wolf_Colour2",
+					"Mob_Zombie_Colour2",
+					"Mob_Zombie_Horse_Colour2",
+					"Mob_Zombie_Villager_Colour2"
+				]
+			}
 		},
 		{
 			"internalName": "bed_overlay",
@@ -3500,7 +3886,7 @@
 		},
 		{
 			"internalName": "potion_bottle_lingering",
-			"displayName": "Lingering Potion"
+			"displayName": "Lingering Bottle"
 		},
 		{
 			"internalName": "barrier",
