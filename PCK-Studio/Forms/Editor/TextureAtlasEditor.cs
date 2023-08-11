@@ -414,6 +414,12 @@ namespace PckStudio
                 file = new PckFile.FileData($"res/textures/{_atlasType}/{_selectedTile.Tile.InternalName}.png", PckFile.FileData.FileType.TextureFile);
             }
 
+            using (var ms = new MemoryStream())
+            {
+                _selectedTile.Texture.Save(ms, ImageFormat.Png);
+                file.SetData(ms.ToArray());
+            }
+
             var animationEditor = new AnimationEditor(file, GetBlendColor());
             if (animationEditor.ShowDialog() == DialogResult.OK && isNewFile)
             {
