@@ -136,11 +136,12 @@ namespace PckStudio
             if (_tiles is null || !_tiles.IndexInRange(index) || (_selectedTile = _tiles[index]) is null)
                 return;
 
-            if(String.IsNullOrEmpty(_selectedTile.Tile.DisplayName))
-			{
+            if (String.IsNullOrEmpty(_selectedTile.Tile.DisplayName))
+            {
                 // changes the selected tile to the base flowing tile (carries all properties over) - Matt
-                _selectedTile = _tiles.Find(t => t.Tile.InternalName == _selectedTile.Tile.InternalName);
-			}
+                var newTile = _tiles.Find(t => t.Tile.InternalName == _selectedTile.Tile.InternalName && !String.IsNullOrEmpty(t.Tile.InternalName));
+                if(newTile is not null) _selectedTile = newTile;
+            }
 
             tileNameLabel.Text = $"{_selectedTile.Tile.DisplayName}";
             selectTilePictureBox.BlendColor = GetBlendColor();
