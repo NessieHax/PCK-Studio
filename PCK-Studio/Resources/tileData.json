@@ -284,7 +284,19 @@
 		},
 		{
 			"internalName": "deadbush",
-			"displayName": "Dead Bush/Shrub"
+			"displayName": "Dead Bush/Shrub",
+			"hasColourEntry": true,
+			"colourEntry": {
+				"isWaterColour": false,
+				"defaultName": "Grass_Common",
+				"variants": [
+					"Grass_Common",
+					"Grass_Mesa",
+					"Grass_Roofed_Forest_Modifier",
+					"Grass_Swamp1",
+					"Grass_Swamp2"
+				]
+			}
 		},
 		{
 			"internalName": "fern",
