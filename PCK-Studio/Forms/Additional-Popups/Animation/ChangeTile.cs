@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using MetroFramework.Forms;
-using Newtonsoft.Json.Linq;
 using PckStudio.Extensions;
-using PckStudio.Forms.Utilities;
+using PckStudio.Internal;
+using PckStudio.Internal.Json;
 
 namespace PckStudio.Forms.Additional_Popups.Animation
 {
 	internal partial class ChangeTile : MetroForm
 	{
         string selectedTile = "";
-        Editor.Animation.AnimationCategory category = Editor.Animation.AnimationCategory.Blocks;
+        AnimationCategory category = AnimationCategory.Blocks;
 
 		public string SelectedTile => selectedTile;
-		public Editor.Animation.AnimationCategory Category => category;
+		public AnimationCategory Category => category;
 
         List<TreeNode> treeViewBlockCache = new List<TreeNode>();
 		List<TreeNode> treeViewItemCache = new List<TreeNode>();
@@ -23,62 +23,55 @@ namespace PckStudio.Forms.Additional_Popups.Animation
 		public ChangeTile()
 		{
 			InitializeComponent();
-			treeViewBlocks.ImageList = AnimationResources.BlockList;
-			treeViewItems.ImageList = AnimationResources.ItemList;
+			treeViewBlocks.ImageList = Tiles.BlockImageList;
+			treeViewItems.ImageList = Tiles.ItemImageList;
 			InitializeTreeviews();
         }
 
 		private void InitializeTreeviews()
 		{
-            Stopwatch stopwatch = Stopwatch.StartNew();
-            GetTileDataToView("blocks", treeViewBlocks.Nodes, treeViewBlockCache.Add);
-            GetTileDataToView("items", treeViewItems.Nodes, treeViewItemCache.Add);
-            stopwatch.Stop();
-            Debug.WriteLine($"{nameof(InitializeTreeviews)} took {stopwatch.ElapsedMilliseconds}ms");
+            Profiler.Start();
+            GetTileDataToView(AnimationCategory.Blocks, treeViewBlocks.Nodes, treeViewBlockCache.Add);
+            GetTileDataToView(AnimationCategory.Items, treeViewItems.Nodes, treeViewItemCache.Add);
+            Profiler.Stop();
         }
 
 		private void treeViews_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			if (e.Node.Tag is string tileData)
+			if (e.Node.Tag is JsonTileInfo tileData)
 			{
-				selectedTile = tileData;
-				Console.WriteLine(selectedTile);
+				selectedTile = tileData.InternalName;
                 category = e.Node.TreeView == treeViewItems
-					? Editor.Animation.AnimationCategory.Items
-					: Editor.Animation.AnimationCategory.Blocks;
+					? AnimationCategory.Items
+					: AnimationCategory.Blocks;
             }
 		}
 
-		private void GetTileDataToView(string key, TreeNodeCollection collection, Action<TreeNode> additinalAction)
+		private void GetTileDataToView(AnimationCategory key, TreeNodeCollection collection, Action<TreeNode> additionalAction)
 		{
-            try
+			List<JsonTileInfo> textureInfos = key switch
+			{
+                AnimationCategory.Blocks => Tiles.BlockTileInfos,
+                AnimationCategory.Items => Tiles.ItemTileInfos,
+				_ => throw new InvalidOperationException(nameof(key))
+			};
+			Profiler.Start();
+            if (textureInfos is not null)
             {
-                if (AnimationResources.JsonTileData[key] is not null)
-                {
-                    foreach ( (int i, JToken content) in AnimationResources.JsonTileData[key].Children().enumerate())
-                    {
-                        foreach (JProperty prop in ((JObject)content).Properties())
-                        {
-                            if (!string.IsNullOrEmpty((string)prop.Value))
-                            {
-                                TreeNode tileNode = new TreeNode((string)prop.Value)
-                                {
-                                    Tag = prop.Name,
-                                    ImageIndex = i,
-                                    SelectedImageIndex = i,
-                                };
-                                collection.Add(tileNode);
-                                additinalAction(tileNode);
-                            }
-                        }
-                    }
-                }
+				foreach ((int i, var tileData) in textureInfos.enumerate())
+				{
+					if (string.IsNullOrEmpty(tileData.InternalName) || collection.ContainsKey(tileData.InternalName))
+						continue;
+					TreeNode tileNode = new TreeNode(tileData.DisplayName, i, i)
+					{
+						Name = tileData.InternalName,
+						Tag = tileData
+					};
+					collection.Add(tileNode);
+					additionalAction(tileNode);
+				}
             }
-            catch (Newtonsoft.Json.JsonException j_ex)
-            {
-                MessageBox.Show(j_ex.Message, "Error");
-                return;
-            }
+            Profiler.Stop();
         }
 
 		void filter_TextChanged(object sender, EventArgs e)
@@ -96,7 +89,7 @@ namespace PckStudio.Forms.Additional_Popups.Animation
 				foreach (TreeNode _node in treeViewBlockCache)
 				{
 					if (_node.Text.ToLower().Contains(metroTextBox1.Text.ToLower()) || 
-						(_node.Tag as string).ToLower().Contains(metroTextBox1.Text.ToLower()))
+						(_node.Tag as JsonTileInfo).InternalName.ToLower().Contains(metroTextBox1.Text.ToLower()))
 					{
 						treeViewBlocks.Nodes.Add((TreeNode)_node.Clone());
 					}
@@ -104,7 +97,7 @@ namespace PckStudio.Forms.Additional_Popups.Animation
 				foreach (TreeNode _node in treeViewItemCache)
 				{
 					if (_node.Text.ToLower().Contains(metroTextBox1.Text.ToLower()) ||
-						(_node.Tag as string).ToLower().Contains(metroTextBox1.Text.ToLower()))
+						(_node.Tag as JsonTileInfo).InternalName.ToLower().Contains(metroTextBox1.Text.ToLower()))
 					{
 						treeViewItems.Nodes.Add((TreeNode)_node.Clone());
 					}
