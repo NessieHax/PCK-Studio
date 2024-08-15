@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace PckStudio.Extensions
@@ -11,14 +7,14 @@ namespace PckStudio.Extensions
     {
         internal static bool IsTagOfType<T>(this TreeNode node) where T : class
         {
-            return node.Tag is T;
+            return node?.Tag is T;
         }
 
         internal static bool TryGetTagData<TOut>(this TreeNode node, out TOut tagData) where TOut : class
         {
-            if (node?.Tag is TOut _data)
+            if (node?.Tag is TOut data)
             {
-                tagData = _data;
+                tagData = data;
                 return true;
             }
             tagData = default;
